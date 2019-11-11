@@ -5,12 +5,15 @@ class Jie extends Component {
         this.text = "65899"
 
     }
+    my(e){
+        alert(1)
+    }
     render() {
         return (
             <ul>
                 {
                     //jasdkfadkfjsd
-                    this.props.text.map( (item, i) => <li onClick="alert(1)" key={i}>{item}</li> )
+                    this.props.text.map( (item, i) => <li onClick={this.my} key={i}>{item}</li> )
                 }
             </ul>
         );
