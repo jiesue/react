@@ -4,7 +4,7 @@ class Child1 extends Component {
     render() {
         return (
             <div>
-                <h1>这个是子2222</h1>
+                <h1>这个是子3333</h1>
             </div>
         );
     }
