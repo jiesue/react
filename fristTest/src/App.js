@@ -1,5 +1,9 @@
 import React from 'react';
 // import './App.css';
+import {Swtich, Route, Router, HashHistory, Link} from 'react-router-dom';
+import Child1 from './components/child1'
+import Child2 from './components/child2'
+import Child3 from './components/child3'
 
 function Jie() {
   return (
