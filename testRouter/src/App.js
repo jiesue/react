@@ -1,7 +1,7 @@
 import React from 'react';
 // import './App.css';
 // import { Swtich, Route, BrowserRouter as Router, Link } from 'react-router-dom';
-import { BrowserRouter as Router, Route, Switch, Link, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, NavLink, Redirect } from 'react-router-dom';
 import Child1 from './components/child1'
 import Child2 from './components/child2'
 import Child3 from './components/child3'
@@ -27,9 +27,9 @@ class App extends React.Component {
 
         <Router>
           <header>
-            <Link to="/" style={{ color: 'green' }} activeStyle={{ color: '#fff' }}>1111</Link> <br />
-            <Link to="/child2" activeClassName="active">2222</Link><br />
-            <Link to="/child3">3333</Link><br />
+            <NavLink  to="/child1" style={{ color: 'green' }} activeStyle={{ color: '#f40' }}>1111</NavLink> <br />
+            <NavLink to="/child2" activeClassName="active">2222</NavLink><br />
+            <NavLink to="/child3">3333</NavLink><br />
           </header>
 
           <Switch>
