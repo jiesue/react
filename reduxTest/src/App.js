@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 // import './App.css';
 // import { Swtich, Route, BrowserRouter as Router, Link } from 'react-router-dom';
 import { BrowserRouter as Router, Route, Switch, NavLink, Redirect } from 'react-router-dom';
@@ -19,15 +20,39 @@ function Jie() {
     </div>
   );
 }
-
+const mapStateToProps = (state) => {
+  return {
+    num: state.num
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    increase: () => dispatch({ type: 'increase' }),
+    decrease: () => dispatch({ type: 'decrease' })
+  }
+}
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     increase: () => dispatch({ type: 'increase' }),
+//     decrease: () => dispatch({ type: 'increase' })
+//   }
+// }
 class App extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
   render() {
+    const { decrease, increase } = this.props;
+    // console.log(typeof decrease);
     return (
       <div className="App" style={{ width: '1206px', height: '1000px', margin: '0 auto' }}>
-
+        <h2>{this.props.num} 1</h2>
+        <button onClick={increase}>+</button>
+        <button onClick={decrease}>-</button>
         <Router>
           <header>
-            <NavLink  to="/child1" style={{ color: 'green' }} activeStyle={{ color: '#f40' }}>1111</NavLink> <br />
+            <NavLink to="/child1" style={{ color: 'green' }} activeStyle={{ color: '#f40' }}>1111</NavLink> <br />
             <NavLink to="/child2" activeClassName="active">2222</NavLink><br />
             <NavLink to="/child3">3333</NavLink><br />
           </header>
@@ -44,4 +69,8 @@ class App extends React.Component {
   }
 }
 
-export default App;
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
+// export default (App)
+

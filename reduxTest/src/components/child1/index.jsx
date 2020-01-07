@@ -7,8 +7,9 @@ class Child1 extends Component {
     render() {
         return (
             <div className='child1'>
+               
                 <div className="top">
-                    {console.log(this.props)}
+                    {/* {console.log(this.props)} */}
                     <Link to={`${this.props.match.url}/subChild1`}>嵌套1</Link>
                     <Link to={`${this.props.match.url}/subChild2`}>嵌套2</Link>
                 </div>
