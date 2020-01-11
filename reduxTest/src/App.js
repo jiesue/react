@@ -25,12 +25,10 @@ const mapStateToProps = (state) => {
     num: state.num
   };
 };
-const mapDispatchToProps = (dispatch) => {
-  return {
-    increase: () => dispatch({ type: 'increase' }),
-    decrease: () => dispatch({ type: 'decrease' })
-  }
-}
+const mapDispatchToProps = (dispatch) => ({
+  increase: () => dispatch({ type: 'increase' }),
+  decrease: () => dispatch({ type: 'decrease' })
+})
 // function mapDispatchToProps(dispatch) {
 //   return {
 //     increase: () => dispatch({ type: 'increase' }),
