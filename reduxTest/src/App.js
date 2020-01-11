@@ -6,29 +6,39 @@ import { BrowserRouter as Router, Route, Switch, NavLink, Redirect } from 'react
 import Child1 from './components/child1'
 import Child2 from './components/child2'
 import Child3 from './components/child3'
+import { bindActionCreators } from 'redux'
+import store from './reducer'
 
-function Jie() {
-  return (
-    <div>
-      <h2>这是我的react</h2>
-      <h1>jie:
-        <Route path='/child1' component={Child1}></Route>
-        <Route path='/child2' component={Child2}></Route>
-        <Route path='/child3' component={Child3}></Route>
-      </h1>
+// function Jie() {
+//   return (
+//     <div>
+//       <h2>这是我的react</h2>
+//       <h1>jie:
+//         <Route path='/child1' component={Child1}></Route>
+//         <Route path='/child2' component={Child2}></Route>
+//         <Route path='/child3' component={Child3}></Route>
+//       </h1>
 
-    </div>
-  );
-}
+//     </div>
+//   );
+// }
 const mapStateToProps = (state) => {
   return {
     num: state.num
   };
 };
 const mapDispatchToProps = (dispatch) => ({
-  increase: () => dispatch({ type: 'increase' }),
-  decrease: () => dispatch({ type: 'decrease' })
+  increase: bindActionCreators(() => ({
+    type: 'increase',
+  }), dispatch),
+  decrease: bindActionCreators(() => ({
+    type: 'decrease',
+  }), dispatch),
+  //decrease: () => dispatch({ type: 'decrease' })
 })
+
+
+
 // function mapDispatchToProps(dispatch) {
 //   return {
 //     increase: () => dispatch({ type: 'increase' }),
@@ -42,7 +52,7 @@ class App extends React.Component {
 
   render() {
     const { decrease, increase } = this.props;
-    // console.log(typeof decrease);
+    console.log('1545',store.getState);
     return (
       <div className="App" style={{ width: '1206px', height: '1000px', margin: '0 auto' }}>
         <h2>{this.props.num} 1</h2>
