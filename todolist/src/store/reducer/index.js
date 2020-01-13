@@ -2,7 +2,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 
 
 import counterReducer from './counter';
-import testReducer from './test';
+import todoReducer from './todo';
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger'
 import promise from 'redux-promise';
@@ -11,16 +11,11 @@ import promise from 'redux-promise';
 // combineReducers出问题
 const appReducer = combineReducers({
     counter: counterReducer,
-    test: testReducer
+    todo: todoReducer
 });
 
-/* 
-const composeEnhancers =   window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
-    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}):compose
 
-const enhancer = composeEnhancers(applyMiddleware(thunk))
 
-const store = createStore( reducer, enhancer) // 创建数据存储仓库 */
 // console.log('-----------------------');
 // console.log(counter);
 export default function (initialState) {

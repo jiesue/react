@@ -7,21 +7,9 @@ import Child1 from './components/child1'
 import Child2 from './components/child2'
 import Child3 from './components/child3'
 import { bindActionCreators } from 'redux'
-import store from './store/reducer'
+// import store from './store/reducer'
 import { decreaseCreator, increaseCreator } from './store/actionCreators'
-// function Jie() {
-//   return (
-//     <div>
-//       <h2>这是我的react</h2>
-//       <h1>jie:
-//         <Route path='/child1' component={Child1}></Route>
-//         <Route path='/child2' component={Child2}></Route>
-//         <Route path='/child3' component={Child3}></Route>
-//       </h1>
 
-//     </div>
-//   );
-// }
 const mapStateToProps = (state) => {
   return {
     num: state.counter.num
@@ -50,7 +38,7 @@ class App extends React.Component {
     const { decrease, increase } = this.props;
     // console.log('1545', store.getState);
     return (
-      <div className="App" style={{ width: '1206px', height: '1000px', margin: '0 auto' }}>
+      <div className="App" style={{ width: '1206px', height: '300px', margin: '0 auto' }}>
         <h2>{this.props.num} 1</h2>
         <button onClick={increase}>+</button>
         <button onClick={decrease}>-</button>
