@@ -7,8 +7,8 @@ import Child1 from './components/child1'
 import Child2 from './components/child2'
 import Child3 from './components/child3'
 import { bindActionCreators } from 'redux'
-import store from './reducer'
-
+import store from './store/reducer'
+import { decreaseCreator, increaseCreator } from './store/actionCreators'
 // function Jie() {
 //   return (
 //     <div>
@@ -24,16 +24,12 @@ import store from './reducer'
 // }
 const mapStateToProps = (state) => {
   return {
-    num: state.num
+    num: state.counter.num
   };
 };
 const mapDispatchToProps = (dispatch) => ({
-  increase: bindActionCreators(() => ({
-    type: 'increase',
-  }), dispatch),
-  decrease: bindActionCreators(() => ({
-    type: 'decrease',
-  }), dispatch),
+  increase: bindActionCreators(increaseCreator, dispatch),
+  decrease: bindActionCreators(decreaseCreator, dispatch),
   //decrease: () => dispatch({ type: 'decrease' })
 })
 
@@ -52,7 +48,7 @@ class App extends React.Component {
 
   render() {
     const { decrease, increase } = this.props;
-    console.log('1545',store.getState);
+    console.log('1545', store.getState);
     return (
       <div className="App" style={{ width: '1206px', height: '1000px', margin: '0 auto' }}>
         <h2>{this.props.num} 1</h2>

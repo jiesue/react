@@ -1,8 +1,8 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 
 
-import counter from './counter';
-import test from './test';
+import counterReducer from './counter';
+import testReducer from './test';
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger'
 import promise from 'redux-promise';
@@ -10,8 +10,8 @@ import promise from 'redux-promise';
 // 合并Reducer
 // combineReducers出问题
 const appReducer = combineReducers({
-    counter: counter,
-    test: test
+    counter: counterReducer,
+    test: testReducer
 });
 
 

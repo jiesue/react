@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 const mapStateToProps = (state) => {
     return {
-        num: state.num
+        num: state.counter.num
     };
 };
 const mapDispatchToProps = (dispatch) => {
