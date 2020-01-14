@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import 'antd/dist/antd.css'
 import { Input, Button, List } from 'antd'
 import { ADDITEM, DELITEM, UPDATE_INPUT } from './store/actionTypes'
+import { delItemCreator, addItemCreator } from './store/actionCreators'
+
 import { connect } from 'react-redux';
 const data = [
     '早8点开晨会，分配今天的开发工作',
@@ -16,27 +18,29 @@ const mapState = (state) => {
 }
 const mapDispatch = (dispatch) => {
     return {
-        addItem: (value) => dispatch({ type: ADDITEM, value }),
-        delItem: (index) => dispatch({ type: DELITEM, index }),
+        addItem: (value) => {
+            dispatch(addItemCreator(value))
+        },
+        delItem: (index) => {
+            dispatch(delItemCreator(index))
+        },
         update_input: (newValue) => dispatch({ type: UPDATE_INPUT, newValue })
     }
 }
 class TodoList extends Component {
 
     jonChange = (e) => {
-        console.log(e.target.value)
+        console.log(e.target.value, 'jonChange')
         this.props.update_input(e.target.value)
     }
     jaddItem = () => {
         // alert(1)
-        console.log(this.props.input)
+        console.log(this.props.input, 'jaddItem')
         this.props.addItem(this.props.input)
-        // this.props.update_input('')
+        this.props.update_input('')
     }
-    // delItem = (index) => {
-    //     console.log(index);
-    //     alert(111,index)
-    //     // this.props.delItem(index)
+    // jdelItem = (index) => {
+    //     console.log(index, 'mydel');
     // }
     render() {
         return (
@@ -49,8 +53,16 @@ class TodoList extends Component {
                     <List
                         bordered
                         dataSource={this.props.list}
-                        renderItem={(item, i) => (<List.Item onClick={this.props.delItem(i)}>{item}</List.Item>)}
+                        renderItem={(item, i) => (<List.Item onClick={this.props.delItem.bind(this, i)
+                        }>{item}</List.Item>)}
                     />
+
+                    {/* {
+                        this.props.list.map((element,i) => {
+                            return (<li onClick={this.props.delItem.bind(this,i)}> {element} </li>)
+                            console.log(element)
+                        })
+                    } */}
                 </div>
             </div>
         );

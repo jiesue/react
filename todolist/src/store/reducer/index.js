@@ -8,7 +8,7 @@ import { createLogger } from 'redux-logger'
 import promise from 'redux-promise';
 
 // 合并Reducer
-// combineReducers出问题
+// combineReducers
 const appReducer = combineReducers({
     counter: counterReducer,
     todo: todoReducer
@@ -23,6 +23,6 @@ export default function (initialState) {
     // let createStoreWithMiddleware = applyMiddleware(logger)(createStore)
     const logger = createLogger()
     // let store = createStore(appReducer, applyMiddleware(thunk, promise))
-    let store = createStore(appReducer,{num:0}, applyMiddleware(thunk, promise, logger))
+    let store = createStore(appReducer, applyMiddleware(thunk, promise, logger))
     return store
 }
