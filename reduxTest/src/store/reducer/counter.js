@@ -1,15 +1,16 @@
 // const defaultSteta = {
 //     num: 0
 // }
+import { INCREASE, DECREASE } from '../actionTypes'
 export default (state = { num: 0 }, actions) => {
     const json = JSON.parse(JSON.stringify(state));
     // alert(actions.type)
     switch (actions.type) {
-        case 'increase':
+        case INCREASE:
             json.num++;
             return json;
 
-        case 'decrease':
+        case DECREASE:
             json.num = json.num - 1;
             if (json.num < 0) {
                 json.num = 0;

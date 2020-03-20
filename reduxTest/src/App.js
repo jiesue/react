@@ -8,7 +8,7 @@ import Child2 from './components/child2'
 import Child3 from './components/child3'
 import { bindActionCreators } from 'redux'
 import store from './store/reducer'
-import { decreaseCreator, increaseCreator } from './store/actionCreators'
+import { decreaseCreator1, increaseCreator1 } from './store/actionCreators'
 // function Jie() {
 //   return (
 //     <div>
@@ -24,16 +24,14 @@ import { decreaseCreator, increaseCreator } from './store/actionCreators'
 // }
 const mapStateToProps = (state) => {
   return {
-    num: state.counter.num
+    num: state.test.num1
   };
 };
 const mapDispatchToProps = (dispatch) => ({
-  increase: bindActionCreators(increaseCreator, dispatch),
-  decrease: bindActionCreators(decreaseCreator, dispatch),
+  increase: bindActionCreators(increaseCreator1.bind(null,2), dispatch),
+  decrease: bindActionCreators(decreaseCreator1, dispatch),
   //decrease: () => dispatch({ type: 'decrease' })
 })
-
-
 
 // function mapDispatchToProps(dispatch) {
 //   return {
